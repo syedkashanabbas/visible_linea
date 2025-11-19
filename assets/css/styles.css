@@ -1,0 +1,26 @@
+   body {
+      font-family: 'Zalando Sans SemiExpanded', sans-serif;
+      background:
+        linear-gradient(to right, #00C8C8 0%, #795DE2 40%, #D22CAD 100%); /* Adjusted main gradient */
+      color: white;
+    }
+    /* CINEMATIC MASK REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      clip-path: inset(0 0 100% 0);
+      animation: revealText 1.4s ease forwards;
+    }
+
+    @keyframes revealText {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+        clip-path: inset(0 0 100% 0);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0px);
+        clip-path: inset(0 0 0 0);
+      }
+    }
