@@ -1,9 +1,18 @@
-   body {
-      font-family: 'Zalando Sans SemiExpanded', sans-serif;
-      background:
-        linear-gradient(to right, #00C8C8 0%, #795DE2 40%, #D22CAD 100%); /* Adjusted main gradient */
-      color: white;
-    }
+body {
+  font-family: 'Zalando Sans SemiExpanded', sans-serif;
+  background:
+    /* Layer 1: Main Dark Background */
+    linear-gradient(to top, #000000 0%, #1a1a1a 100%),
+    
+    /* Layer 2: Radial Highlight (like the center glow) */
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 40%),
+    
+    /* Layer 3: Secondary Highlight (like the side glows) */
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    
+  background-blend-mode: screen; /* Keep the blend mode for the layered effect */
+    color: #ffffff;
+}
     /* CINEMATIC MASK REVEAL */
     .reveal {
       opacity: 0;
@@ -24,3 +33,12 @@
         clip-path: inset(0 0 0 0);
       }
     }
+
+    .icon-float {
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.icon-float:hover {
+  transform: translateY(-6px) scale(1.07);
+  filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.45));
+}
