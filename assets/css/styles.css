@@ -28,6 +28,8 @@
     font-weight: 300;
   }
 
+
+
 body {
    font-family: "Satoshi", sans-serif;
   background:
@@ -72,3 +74,5 @@ body {
   transform: translateY(-6px) scale(1.07);
   filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.45));
 }
+
+
