@@ -22,7 +22,7 @@
 
 <body>
 
-<div data-scroll-container>
+
 <nav class="w-full fixed top-0 left-0 z-50 backdrop-blur-2xl bg-gradient-to-b from-[#1D1D1D]/60 via-[#1D1D1D]/20 to-transparent border-b border-white/10">
   <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
 
@@ -52,40 +52,32 @@
     </div>
   </div>
 </nav>
-
+<canvas id="hero-bg"></canvas>
 
 <!-- HERO SECTION -->
-<section class="min-h-screen flex items-center justify-center text-center px-6 pt-32 relative overflow-hidden">
+<section id="hero-section" class="min-h-screen flex items-center justify-center px-10 md:px-24 relative z-10 text-center">
 
-  <!-- Glow -->
-  <div class="absolute inset-0 mix-blend-lighten opacity-90 blur-[80px] pointer-events-none"></div>
+  <div class="max-w-6xl">
 
-  <div class="relative z-10 max-w-6xl mx-auto">
-
-    <!-- Cinematic Reveal Heading -->
     <h1 class="text-3xl md:text-7xl font-semibold leading-tight mb-6 reveal">
       We help Entrepreneurs Build & Grow Successful AI-Powered Businesses.
     </h1>
 
-    <p data-aos="fade-up" data-aos-delay="400"
-       class="text-gray-200 max-w-xl mx-auto text-base mb-10">
+    <p class="text-gray-200 max-w-xl mx-auto text-base mb-10">
       Join thousands of entrepreneurs who leverage our AI technology to build successful AI-powered businesses without the guesswork.
     </p>
 
- <button
-  data-aos="fade-up"
-  data-aos-delay="600"
-  class="px-8 py-3 rounded-xl text-lg font-medium 
-         bg-[#E5F3FF] text-[#0A1A2F]
-         shadow-sm
-         transition-all duration-300
-         hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.45)]
-         hover:bg-[#F0F8FF]">
-  Get a demo
-</button>
-
+    <button
+      class="px-8 py-3 rounded-xl text-lg font-medium 
+            bg-[#E5F3FF] text-[#0A1A2F]
+            shadow-sm transition-all duration-300
+            hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.45)]
+            hover:bg-[#F0F8FF]">
+      Get a demo
+    </button>
 
   </div>
+
 </section>
 
 <section class="relative w-full overflow-hidden">
@@ -755,6 +747,7 @@
   </div>
 
 </section>
+sc]\\\
 <script>
    AOS.init({
       once: true,
@@ -763,6 +756,6 @@
   });
 
 </script>
-</div>
+
 </body>
 </html>
