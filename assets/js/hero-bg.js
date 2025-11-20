@@ -1,128 +1,110 @@
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
-import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
+// === Explosive Morph Transition (One-way, no reassemble) ===
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 
-const canvas = document.getElementById("neuralGalaxy");
-
-// === RESPONSIVE SETTINGS ===
-let PARTICLE_COUNT;
-
-if (window.innerWidth < 480) {
-  // mobile
-  PARTICLE_COUNT = 45000;
-} else if (window.innerWidth < 1024) {
-  // tablet
-  PARTICLE_COUNT = 90000;
-} else {
-  // desktop / large screens
-  PARTICLE_COUNT = 180000;
-}
-
-// === SCENE ===
+const canvas = document.getElementById('hero-bg');
 const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 0, 8);
 
-// === CAMERA ===
-const camera = new THREE.PerspectiveCamera(
-  60,
-  innerWidth / innerHeight,
-  0.1,
-  400
-);
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-// responsive camera distance
-if (innerWidth < 480) camera.position.set(0, 0, 55);
-else if (innerWidth < 1024) camera.position.set(0, 0, 45);
-else camera.position.set(0, 0, 38);
+scene.add(new THREE.AmbientLight(0xffffff, 0.25));
+const pointLight = new THREE.PointLight(0x7cffb2, 2, 50);
+pointLight.position.set(2, 3, 5);
+scene.add(pointLight);
 
-// === RENDERER ===
-const renderer = new THREE.WebGLRenderer({
-  canvas,
-  alpha: true,
-  antialias: true
-});
+let particles, originalPositions, explodedPositions, morph = 0;
 
-// limit pixel density to prevent mobile lag
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
-renderer.setSize(innerWidth, innerHeight);
+const loader = new THREE.TextureLoader();
+loader.load('assets/imgs/face.png', (texture) => {
+  const img = texture.image;
+  const c = document.createElement('canvas');
+  const ctx = c.getContext('2d');
+  c.width = img.width;
+  c.height = img.height;
+  ctx.drawImage(img, 0, 0, img.width, img.height);
+  const imgData = ctx.getImageData(0, 0, img.width, img.height);
 
-// === PARTICLES ===
-const positions = new Float32Array(PARTICLE_COUNT * 3);
-const explodedPositions = new Float32Array(PARTICLE_COUNT * 3);
+  const positions = [], colors = [];
+  const color = new THREE.Color();
 
-for (let i = 0; i < PARTICLE_COUNT; i++) {
-  const idx = i * 3;
-
-  // small cluster
-  positions[idx] = (Math.random() - 0.5) * 0.6;
-  positions[idx + 1] = (Math.random() - 0.5) * 0.6;
-  positions[idx + 2] = (Math.random() - 0.5) * 0.6;
-
-  // galaxy spread
-  const radius = THREE.MathUtils.randFloat(8, 20);
-  const theta = Math.random() * Math.PI * 2;
-  const phi = Math.acos((Math.random() * 2) - 1);
-
-  explodedPositions[idx] = radius * Math.sin(phi) * Math.cos(theta);
-  explodedPositions[idx + 1] = radius * Math.sin(phi) * Math.sin(theta);
-  explodedPositions[idx + 2] = radius * Math.cos(phi);
-}
-
-const geometry = new THREE.BufferGeometry();
-geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-
-const material = new THREE.PointsMaterial({
-  size: innerWidth < 480 ? 0.07 : 0.055,
-  color: new THREE.Color("#7ccfff"),
-  transparent: true,
-  opacity: 0.9,
-  blending: THREE.AdditiveBlending
-});
-
-const galaxy = new THREE.Points(geometry, material);
-scene.add(galaxy);
-
-// === BURST ON LOAD ===
-gsap.to(positions, {
-  endArray: explodedPositions,
-  duration: 3,
-  ease: "power3.out",
-  onUpdate: () => {
-    geometry.attributes.position.needsUpdate = true;
+  for (let y = 0; y < img.height; y += 3) {
+    for (let x = 0; x < img.width; x += 3) {
+      const i = (y * img.width + x) * 4;
+      const brightness = imgData.data[i];
+      if (brightness > 40) {
+        const posX = (x - img.width / 2) / 50;
+        const posY = -(y - img.height / 2) / 50;
+        const posZ = Math.random() * 0.3 - 0.15;
+        positions.push(posX, posY, posZ);
+        color.setHSL(0.35 + Math.random() * 0.1, 1, 0.6 + Math.random() * 0.2);
+        colors.push(color.r, color.g, color.b);
+      }
+    }
   }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+  const material = new THREE.PointsMaterial({
+    size: 0.045,
+    vertexColors: true,
+    blending: THREE.AdditiveBlending,
+    transparent: true,
+    opacity: 0.95,
+  });
+
+  particles = new THREE.Points(geometry, material);
+  scene.add(particles);
+
+  const count = positions.length / 3;
+  originalPositions = [];
+  explodedPositions = [];
+
+  for (let i = 0; i < count; i++) {
+    const ox = positions[i * 3];
+    const oy = positions[i * 3 + 1];
+    const oz = positions[i * 3 + 2];
+    originalPositions.push(new THREE.Vector3(ox, oy, oz));
+
+    const dir = new THREE.Vector3(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
+    const dist = 6 + Math.random() * 3;
+    explodedPositions.push(new THREE.Vector3(ox + dir.x * dist, oy + dir.y * dist, oz + dir.z * dist));
+  }
+
+  // one-time explosion
+  gsap.to({ t: 0 }, {
+    t: 1,
+    duration: 2.5,
+    ease: 'power3.out',
+    onUpdate: function () { morph = this.targets()[0].t; }
+  });
 });
 
-// === PARALLAX ===
-let mouseX = 0;
-let mouseY = 0;
-
-document.addEventListener("mousemove", (e) => {
-  mouseX = (e.clientX / innerWidth - 0.5) * 2;
-  mouseY = (e.clientY / innerHeight - 0.5) * 2;
-});
-
-// Touch parallax
-document.addEventListener("touchmove", (e) => {
-  const t = e.touches[0];
-  mouseX = (t.clientX / innerWidth - 0.5) * 2;
-  mouseY = (t.clientY / innerHeight - 0.5) * 2;
-});
-
-// === ANIMATE ===
 function animate() {
   requestAnimationFrame(animate);
-
-  galaxy.rotation.y += 0.0007;
-  galaxy.rotation.x += 0.00025;
-
-  camera.position.x += (mouseX * 5 - camera.position.x) * 0.03;
-  camera.position.y += (-mouseY * 5 - camera.position.y) * 0.03;
-
+  if (particles) {
+    const posArray = particles.geometry.attributes.position.array;
+    for (let i = 0; i < posArray.length; i += 3) {
+      const idx = i / 3;
+      const o = originalPositions[idx];
+      const e = explodedPositions[idx];
+      posArray[i] = THREE.MathUtils.lerp(o.x, e.x, morph);
+      posArray[i + 1] = THREE.MathUtils.lerp(o.y, e.y, morph);
+      posArray[i + 2] = THREE.MathUtils.lerp(o.z, e.z, morph);
+    }
+    particles.geometry.attributes.position.needsUpdate = true;
+    particles.rotation.y += 0.0015;
+  }
   renderer.render(scene, camera);
 }
 animate();
 
-// === RESIZE ===
-window.addEventListener("resize", () => {
-  camera.aspect = innerWidth / innerHeight;
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(innerWidth, innerHeight);
+  renderer.setSize(window.innerWidth, window.innerHeight);
 });
