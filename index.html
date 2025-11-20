@@ -52,31 +52,37 @@
     </div>
   </div>
 </nav>
-<canvas id="hero-bg"></canvas>
+<section id="hero-section" 
+  class="relative min-h-screen flex items-center justify-center px-10 md:px-24 text-center overflow-hidden">
 
-<!-- HERO SECTION -->
-<section id="hero-section" class="min-h-screen flex items-center justify-center px-10 md:px-24 relative z-10 text-center">
+  <!-- Galaxy Canvas (now ONLY inside hero) -->
+  <canvas id="neuralGalaxy" class="absolute inset-0 w-full h-full"></canvas>
 
-  <div class="max-w-6xl">
+  <!-- Hero Content -->
+<div class="relative z-10 max-w-6xl">
 
-    <h1 class="text-3xl md:text-7xl font-semibold leading-tight mb-6 reveal">
-      We help Entrepreneurs Build & Grow Successful AI-Powered Businesses.
-    </h1>
+  <h1 class="text-3xl md:text-7xl font-semibold leading-tight mb-6 reveal">
+    AI Integration & Custom Solutions<br class="hidden md:block">
+    Built for Real Business Operations.
+  </h1>
 
-    <p class="text-gray-200 max-w-xl mx-auto text-base mb-10">
-      Join thousands of entrepreneurs who leverage our AI technology to build successful AI-powered businesses without the guesswork.
-    </p>
+  <p class="text-gray-200 max-w-xl mx-auto text-base mb-10">
+    We help companies move from disconnected AI experiments to 
+    fully-integrated systems — workflows, automations, assistants 
+    and custom AI solutions designed around your stack, your data 
+    and your real processes.
+  </p>
 
-    <button
-      class="px-8 py-3 rounded-xl text-lg font-medium 
-            bg-[#E5F3FF] text-[#0A1A2F]
-            shadow-sm transition-all duration-300
-            hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.45)]
-            hover:bg-[#F0F8FF]">
-      Get a demo
-    </button>
+  <button
+    class="px-8 py-3 rounded-xl text-lg font-medium bg-[#E5F3FF] text-[#0A1A2F]
+           shadow-sm transition-all duration-300
+           hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.45)]
+           hover:bg-[#F0F8FF]">
+    Request an AI Assessment
+  </button>
 
-  </div>
+</div>
+
 
 </section>
 
@@ -89,35 +95,41 @@
                 justify-between items-start md:items-center gap-12">
 
       <!-- LEFT TEXT -->
-      <div class="max-w-md">
+      <div class="max-w-3xl">
         <h2 class="text-4xl md:text-5xl font-semibold leading-tight text-white">
-          Results that speak  
+          Impact you can measure  
           <br>
-          <span class="">for themselves.</span>
+          <span class="">across your operations.</span>
         </h2>
 
-        <p class="text-sm  mt-6 max-w-xs">
-          *Based on self-reported client results. Individual performance varies.
-          See our full earnings disclaimer.
+        <p class="text-sm mt-6 max-w-xs opacity-80">
+          Data from real client implementations. Every result depends on 
+          stack maturity, processes and adoption speed.
         </p>
       </div>
 
       <!-- METRICS -->
-      <div class="flex flex-col md:flex-row gap-12 text-center ">
-        
+      <div class="flex flex-col md:flex-row gap-12 text-center">
+
         <div>
-          <h3 class="text-3xl font-semibold">$308,960</h3>
-          <p class="text-xs  mt-1">avg cash collected<br>by our clients</p>
+          <h3 class="text-3xl font-semibold">72%</h3>
+          <p class="text-xs mt-1 opacity-80">
+            Reduction in manual<br>operational workload
+          </p>
         </div>
 
         <div>
-          <h3 class="text-3xl font-semibold">$18,105</h3>
-          <p class="text-xs  mt-1">avg monthly revenue<br>of our clients</p>
+          <h3 class="text-3xl font-semibold">4.3×</h3>
+          <p class="text-xs mt-1 opacity-80">
+            Faster execution of<br>core business processes
+          </p>
         </div>
 
         <div>
-          <h3 class="text-3xl font-semibold">$3,752</h3>
-          <p class="text-xs  mt-1">avg monthly retainer<br>our clients charge</p>
+          <h3 class="text-3xl font-semibold">96%</h3>
+          <p class="text-xs mt-1 opacity-80">
+            Accuracy on AI assistants<br>trained on client knowledge
+          </p>
         </div>
 
       </div>
@@ -126,6 +138,7 @@
   </div>
 
 </section>
+
 
 <section class="w-full py-32">
 
@@ -251,7 +264,7 @@
 
 </section>
 
-<section class="w-full py-28 overflow-hidden">
+<section class="w-full py-32 overflow-hidden">
 
   <!-- Heading -->
   <div class="text-center mb-20" 
@@ -756,6 +769,6 @@
   });
 
 </script>
-
+<script src="./assets/js/hero-bg.js" type="module"></script>
 </body>
 </html>
