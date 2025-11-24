@@ -1,108 +1,147 @@
-// === Explosive Morph Transition (One-way, no reassemble) ===
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 
 const canvas = document.getElementById('hero-bg');
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 8);
+if (!canvas) {
+  console.warn('hero-bg canvas not found');
+}
 
-const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+  60,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+camera.position.set(0, 0, 5);
+
+const renderer = new THREE.WebGLRenderer({
+  canvas,
+  antialias: true,
+  alpha: true
+});
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-scene.add(new THREE.AmbientLight(0xffffff, 0.25));
-const pointLight = new THREE.PointLight(0x7cffb2, 2, 50);
+scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+
+const pointLight = new THREE.PointLight(0x66ccff, 2, 40);
 pointLight.position.set(2, 3, 5);
 scene.add(pointLight);
 
-let particles, originalPositions, explodedPositions, morph = 0;
+// ================== PARTICLES ==================
+const particleCount = 1500;
 
-const loader = new THREE.TextureLoader();
-loader.load('assets/imgs/face.png', (texture) => {
-  const img = texture.image;
-  const c = document.createElement('canvas');
-  const ctx = c.getContext('2d');
-  c.width = img.width;
-  c.height = img.height;
-  ctx.drawImage(img, 0, 0, img.width, img.height);
-  const imgData = ctx.getImageData(0, 0, img.width, img.height);
+// compact core
+const originalPositions = [];
+const explodedPositions = [];
+const positionArray = new Float32Array(particleCount * 3);
 
-  const positions = [], colors = [];
-  const color = new THREE.Color();
+for (let i = 0; i < particleCount; i++) {
+  // random point in small sphere (core)
+  const r = 1.8 * Math.cbrt(Math.random()); // dense center
+  const theta = Math.random() * Math.PI * 2;
+  const phi = Math.acos(2 * Math.random() - 1);
 
-  for (let y = 0; y < img.height; y += 3) {
-    for (let x = 0; x < img.width; x += 3) {
-      const i = (y * img.width + x) * 4;
-      const brightness = imgData.data[i];
-      if (brightness > 40) {
-        const posX = (x - img.width / 2) / 50;
-        const posY = -(y - img.height / 2) / 50;
-        const posZ = Math.random() * 0.3 - 0.15;
-        positions.push(posX, posY, posZ);
-        color.setHSL(0.35 + Math.random() * 0.1, 1, 0.6 + Math.random() * 0.2);
-        colors.push(color.r, color.g, color.b);
-      }
-    }
-  }
+  const ox = r * Math.sin(phi) * Math.cos(theta);
+  const oy = r * Math.sin(phi) * Math.sin(theta);
+  const oz = r * Math.cos(phi);
 
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+  originalPositions.push(new THREE.Vector3(ox, oy, oz));
 
-  const material = new THREE.PointsMaterial({
-    size: 0.045,
-    vertexColors: true,
-    blending: THREE.AdditiveBlending,
-    transparent: true,
-    opacity: 0.95,
-  });
+  positionArray[i * 3] = ox;
+  positionArray[i * 3 + 1] = oy;
+  positionArray[i * 3 + 2] = oz;
 
-  particles = new THREE.Points(geometry, material);
-  scene.add(particles);
+  // explosion: same direction, much further out so it covers screen
+  const dir = new THREE.Vector3(ox, oy, oz).normalize();
+  const explodeDist = 7 + Math.random() * 4; // full screen blast
+  explodedPositions.push(
+    new THREE.Vector3(
+      ox + dir.x * explodeDist,
+      oy + dir.y * explodeDist,
+      oz + dir.z * explodeDist
+    )
+  );
+}
 
-  const count = positions.length / 3;
-  originalPositions = [];
-  explodedPositions = [];
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute(
+  'position',
+  new THREE.BufferAttribute(positionArray, 3)
+);
 
-  for (let i = 0; i < count; i++) {
-    const ox = positions[i * 3];
-    const oy = positions[i * 3 + 1];
-    const oz = positions[i * 3 + 2];
-    originalPositions.push(new THREE.Vector3(ox, oy, oz));
-
-    const dir = new THREE.Vector3(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
-    const dist = 6 + Math.random() * 3;
-    explodedPositions.push(new THREE.Vector3(ox + dir.x * dist, oy + dir.y * dist, oz + dir.z * dist));
-  }
-
-  // one-time explosion
-  gsap.to({ t: 0 }, {
-    t: 1,
-    duration: 2.5,
-    ease: 'power3.out',
-    onUpdate: function () { morph = this.targets()[0].t; }
-  });
+const material = new THREE.PointsMaterial({
+  size: 0.04,
+  color: 0x88e3ff,
+  transparent: true,
+  opacity: 0.9,
+  depthWrite: false,
+  blending: THREE.AdditiveBlending
 });
 
-function animate() {
+const particles = new THREE.Points(geometry, material);
+scene.add(particles);
+
+// ================== INTERACTION ==================
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener('mousemove', e => {
+  mouseX = (e.clientX / window.innerWidth - 0.5) * 0.6;
+  mouseY = (e.clientY / window.innerHeight - 0.5) * 0.6;
+});
+
+// ================== EXPLOSION LOGIC ==================
+let explodeProgress = 0;       // 0 = core, 1 = fully exploded
+let explosionStarted = false;
+let lastTime = performance.now();
+
+// start explosion after 1.5s
+setTimeout(() => {
+  explosionStarted = true;
+}, 1500);
+
+// ================== ANIMATION LOOP ==================
+function animate(now) {
   requestAnimationFrame(animate);
-  if (particles) {
-    const posArray = particles.geometry.attributes.position.array;
-    for (let i = 0; i < posArray.length; i += 3) {
-      const idx = i / 3;
-      const o = originalPositions[idx];
-      const e = explodedPositions[idx];
-      posArray[i] = THREE.MathUtils.lerp(o.x, e.x, morph);
-      posArray[i + 1] = THREE.MathUtils.lerp(o.y, e.y, morph);
-      posArray[i + 2] = THREE.MathUtils.lerp(o.z, e.z, morph);
-    }
-    particles.geometry.attributes.position.needsUpdate = true;
-    particles.rotation.y += 0.0015;
+
+  const delta = (now - lastTime) / 1000;
+  lastTime = now;
+
+  if (explosionStarted && explodeProgress < 1) {
+    // increase progress over ~2s
+    explodeProgress = Math.min(1, explodeProgress + delta / 2);
   }
+
+  const pos = geometry.attributes.position.array;
+
+  for (let i = 0; i < particleCount; i++) {
+    const o = originalPositions[i];
+    const e = explodedPositions[i];
+
+    pos[i * 3] = THREE.MathUtils.lerp(o.x, e.x, easeOut(explodeProgress));
+    pos[i * 3 + 1] = THREE.MathUtils.lerp(o.y, e.y, easeOut(explodeProgress));
+    pos[i * 3 + 2] = THREE.MathUtils.lerp(o.z, e.z, easeOut(explodeProgress));
+  }
+
+  geometry.attributes.position.needsUpdate = true;
+
+  // subtle rotation with mouse influence
+  particles.rotation.y += (mouseX - particles.rotation.y) * 0.03;
+  particles.rotation.x += (-mouseY - particles.rotation.x) * 0.03;
+
   renderer.render(scene, camera);
 }
-animate();
 
+// easing for smoother explosion
+function easeOut(t) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
+animate(performance.now());
+
+// ================== RESIZE ==================
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
