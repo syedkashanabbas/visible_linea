@@ -33,12 +33,12 @@
 
     <!-- Menu -->
     <div class="hidden md:flex items-center gap-8 text-sm text-gray-200">
-      <a href="#" class="hover:text-white transition-colors">Agents</a>
-      <a href="#" class="hover:text-white transition-colors">Platform</a>
-      <a href="#" class="hover:text-white transition-colors">About</a>
-      <a href="#" class="hover:text-white transition-colors">Case Studies</a>
-      <a href="#" class="hover:text-white transition-colors">Resources</a>
-      <a href="#" class="hover:text-white transition-colors">Careers</a>
+      
+      <a href="#" class="hover:text-white transition-colors">Home</a>
+      <a href="#about" class="hover:text-white transition-colors">About</a>
+      <a href="#casestudies" class="hover:text-white transition-colors">Case Studies</a>
+      <a href="#resources" class="hover:text-white transition-colors">Resources</a>
+
 
       <!-- Get in touch button -->
       <a href="#" class="px-4 py-2 rounded-lg font-medium bg-[#264FDD] text-white hover:bg-[#264FDD]/80 transition">
@@ -140,7 +140,7 @@
 </section>
 
 
-<section class="w-full py-32">
+<section id="about" class="w-full py-32">
 
   <!-- Heading -->
   <div class="text-center max-w-5xl mx-auto mb-20"
@@ -289,7 +289,30 @@
   </div>
 
 </section>
+<section id="resources" class="w-full py-28">
+  <div class="w-full bg-black text-white py-32 flex flex-col items-center text-center px-6">
+  
+  <h1 class="text-4xl md:text-5xl font-semibold leading-tight">
+    Agentic. Reliable.<br />
+    Accurate AI for Enterprise
+  </h1>
 
+  <p class="mt-6 text-base leading-relaxed  opacity-80 max-w-5xl ">
+    
+    An AI-native platform that combines accuracy, reliability, and flexibility 
+    in one powerful solution. With multi-agent capabilities and a modular design, 
+    it acts as the glue between your systems.
+  </p>
+
+
+  <button class="mt-10 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-medium transition">
+    Explore our platform
+  </button>
+
+</div>
+
+  <img src="./assets/imgs/flowchart.png" alt="">
+</section>
 <section class="w-full py-32 overflow-hidden">
 
   <!-- Heading -->
@@ -558,63 +581,8 @@
 
 </section>
 
-<section class="w-full py-28 relative overflow-hidden text-white 
-                /* --- BLACK BACKGROUND BASE --- */
-                bg-[#0d1117]"> 
 
-  <div class="absolute inset-0">
-    <div class="absolute top-0 left-1/2 w-96 h-96 -translate-x-1/2 rounded-full 
-                bg-white/5 blur-[150px] pointer-events-none"></div>
-  </div>
-
-  <div class="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
-
-    <div>
-      <h2 class="text-4xl md:text-5xl font-semibold leading-tight">
-        Get access to our AI <br>
-        <span class="text-[#00C8C8] drop-shadow-lg">Growth Consultant</span> 
-      </h2>
-
-      <p class="mt-4 text-base opacity-70">
-        to answer all your questions about building an AI business
-      </p>
-    </div>
-
-    <div class="flex flex-col md:flex-row items-start md:items-center gap-4">
-
-      <input 
-        type="email"
-        placeholder="Your email"
-        class="w-full md:w-[350px] px-5 py-4 rounded-xl 
-               /* Card/Input Styling: Dark background with border glow */
-               bg-white/5 border border-white/10 text-white 
-               placeholder-white/40 backdrop-blur-xl 
-               shadow-inner shadow-black/50
-               
-               /* Focus Styling: Cyan/White Glow on focus */
-               focus:outline-none focus:border-cyan-400/50 
-               focus:ring-2 focus:ring-cyan-500/30
-               focus:shadow-[0_0_20px_0_rgba(0,200,200,0.5)] 
-               transition-all duration-300"
-      />
-
-      <button
-        class="px-8 py-4 rounded-xl 
-               /* Button Styling: Cyan Primary Color */
-               bg-[#00C8C8] text-[#0d1117] font-bold
-               /* Button Shadow: Matching Cyan Glow */
-               shadow-[0_0_25px_6px_rgba(0,200,200,0.35)]
-               hover:shadow-[0_0_30px_12px_rgba(0,200,200,0.45)]
-               transition-all duration-300 whitespace-nowrap"
-      >
-        Get access
-      </button>
-
-    </div>
-
-  </div>
-</section>
-<section class="w-full py-28">
+<section id="casestudies" class="w-full py-28">
 
   <!-- Heading -->
   <div class="text-center max-w-8xl mx-auto mb-16 px-6"
@@ -655,7 +623,7 @@
          data-aos-duration="1000">
 
       <div class="relative">
-        <img src="assets/imgs/news2.jpg" class="w-full object-cover" />
+        <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg" class="w-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-[#0B232C] via-transparent to-transparent"></div>
       </div>
 
@@ -688,7 +656,7 @@
          data-aos-delay="150">
 
       <div class="relative">
-        <img src="assets/imgs/news1.png" class="w-full object-cover" />
+        <img src="assets/imgs/news2.jpg" class="w-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-[#0B232C] via-transparent to-transparent"></div>
       </div>
 
@@ -814,6 +782,62 @@
   </div>
 
 </section>
+<section class="w-full py-28 relative overflow-hidden text-white 
+                /* --- BLACK BACKGROUND BASE --- */
+                bg-[#0d1117]"> 
+
+  <div class="absolute inset-0">
+    <div class="absolute top-0 left-1/2 w-96 h-96 -translate-x-1/2 rounded-full 
+                bg-white/5 blur-[150px] pointer-events-none"></div>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+
+    <div>
+      <h2 class="text-4xl md:text-5xl font-semibold leading-tight">
+        Get access to our AI <br>
+        <span class="text-[#00C8C8] drop-shadow-lg">Growth Consultant</span> 
+      </h2>
+
+      <p class="mt-4 text-base opacity-70">
+        to answer all your questions about building an AI business
+      </p>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-4">
+
+      <input 
+        type="email"
+        placeholder="Your email"
+        class="w-full md:w-[350px] px-5 py-4 rounded-xl 
+               /* Card/Input Styling: Dark background with border glow */
+               bg-white/5 border border-white/10 text-white 
+               placeholder-white/40 backdrop-blur-xl 
+               shadow-inner shadow-black/50
+               
+               /* Focus Styling: Cyan/White Glow on focus */
+               focus:outline-none focus:border-cyan-400/50 
+               focus:ring-2 focus:ring-cyan-500/30
+               focus:shadow-[0_0_20px_0_rgba(0,200,200,0.5)] 
+               transition-all duration-300"
+      />
+
+      <button
+        class="px-8 py-4 rounded-xl 
+               /* Button Styling: Cyan Primary Color */
+               bg-[#00C8C8] text-[#0d1117] font-bold
+               /* Button Shadow: Matching Cyan Glow */
+               shadow-[0_0_25px_6px_rgba(0,200,200,0.35)]
+               hover:shadow-[0_0_30px_12px_rgba(0,200,200,0.45)]
+               transition-all duration-300 whitespace-nowrap"
+      >
+        Get access
+      </button>
+
+    </div>
+
+  </div>
+</section>
 <footer class="w-full py-20 mt-32 relative">
 
   <!-- Glow Center -->
@@ -825,12 +849,11 @@
 
     <!-- TOP NAV -->
     <div class="flex justify-center gap-12 md:gap-20 mb-16 text-sm text-white/80">
-      <a href="#" class="hover:text-white transition">Services</a>
-      <a href="#" class="hover:text-white transition">Solutions</a>
-      <a href="#" class="hover:text-white transition">Case Studies</a>
-      <a href="#" class="hover:text-white transition">Resources</a>
-      <a href="#" class="hover:text-white transition">About</a>
-      <a href="#" class="hover:text-white transition">Contact</a>
+      <a href="#" class="hover:text-white transition">Home</a>
+      <a href="#about" class="hover:text-white transition">About</a>
+      <a href="casestudies" class="hover:text-white transition">Case Studies</a>
+      <a href="#resources" class="hover:text-white transition">Resources</a>
+
     </div>
 
     <!-- LOGO + NAME -->
