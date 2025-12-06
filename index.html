@@ -50,38 +50,49 @@
   </div>
 </nav>
 <section id="hero-section" 
-  class="relative min-h-screen flex items-center justify-center px-10 md:px-24 text-center overflow-hidden">
+  class="relative min-h-screen flex items-center px-10 md:px-24 overflow-hidden">
 
-  <!-- Galaxy Canvas (now ONLY inside hero) -->
   <canvas id="hero-bg" class="absolute inset-0 w-full h-full"></canvas>
 
-  <!-- Hero Content -->
-<div class="relative z-10 max-w-6xl">
+  <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-10 w-full">
 
-  <h1 class="text-3xl md:text-7xl font-semibold leading-tight mb-6 reveal">
-  Dalla visione ai sistemi: integriamo <br class="hidden md:block">
-    l’AI nei tuoi processi.
-  </h1>
+    <!-- Left Column (1–6) -->
+    <div class="md:col-span-6 flex flex-col justify-center">
 
-  <p class="text-gray-200 max-w-xl mx-auto text-base mb-10">
-    Progettiamo e implementiamo soluzioni di intelligenza artificiale che
-si connettono al tuo stack, automatizzano i flussi e migliorano le
-performance operative.
-  </p>
+      <h1 id="hero-title" class="text-3xl md:text-6xl font-semibold leading-tight mb-6 reveal">
+        <span class="line">Dalla visione ai sistemi:</span>
+        <span class="line">integriamo l’AI nei tuoi processi.</span>
+      </h1>
 
-  <button
-    class="px-8 py-3 rounded-xl text-lg font-medium bg-[#E5F3FF] text-[#0A1A2F]
-           shadow-sm transition-all duration-300
-           hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.45)]
-           hover:bg-[#F0F8FF]">
-    Richiedi un’Analisi AI
+      <p id="hero-sub" class="text-gray-200 text-lg leading-relaxed mb-6 reveal-item">
+        Progettiamo e implementiamo soluzioni di intelligenza artificiale che si connettono al tuo stack, automatizzano i flussi e migliorano le performance operative.
+      </p>
 
-  </button>
+      <p id="hero-body" class="text-gray-300 text-base leading-relaxed mb-10 max-w-xl reveal-item">
+        Niente esperimenti isolati o strumenti scollegati. Creiamo sistemi reali, workflow, assistenti, integrazioni API e automazioni che funzionano ogni giorno nella tua azienda.
+      </p>
 
-</div>
+      <div class="flex gap-4 reveal-item">
+        <button class="px-8 py-3 rounded-xl text-lg font-medium bg-[#E5F3FF] text-[#0A1A2F] shadow-sm transition-all duration-300 hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.45)] hover:bg-[#F0F8FF]">
+          Richiedi un’Analisi AI
+        </button>
 
+        <button class="px-8 py-3 rounded-xl text-lg font-medium border border-white/40 text-white transition-all duration-300 hover:bg-white hover:text-[#0A1A2F]">
+          Esplora i servizi
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Right Column (7–12) -->
+    <div class="md:col-span-6 relative">
+      <!-- This is intentionally empty for now, hero BG canvas handles visuals -->
+    </div>
+
+  </div>
 
 </section>
+
 <section class="relative w-full overflow-hidden">
 
   <div class="relative max-w-8xl mx-auto px-6">
@@ -699,5 +710,6 @@ performance operative.
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="./assets/js/hero-bg.js" type="module"></script>
+<script src="./assets/js/hero-heading.js"></script>
 </body>
 </html>
