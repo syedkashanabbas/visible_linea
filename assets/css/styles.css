@@ -100,3 +100,11 @@ body {
   transform: translateY(0);
 }
 
+.node {
+  position: absolute;
+  transform: translate(-50%, -50%); /* THIS FIXES YOUR ALIGNMENT */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

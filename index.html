@@ -86,7 +86,27 @@
 
     <!-- Right Column (7–12) -->
     <div class="md:col-span-6 relative">
-      <!-- This is intentionally empty for now, hero BG canvas handles visuals -->
+     <div id="system-map"
+     class="relative w-full h-[420px] md:h-[500px] flex items-center justify-center 
+             ">
+
+  <!-- SVG lines -->
+  <svg class="absolute inset-0 w-full h-full pointer-events-none" id="system-lines"></svg>
+
+  <!-- CENTRAL NODE -->
+  <div id="center-node"
+       class="relative z-10 w-40 h-40 md:w-48 md:h-48 rounded-full bg-white flex items-center justify-center text-black font-semibold text-center shadow-xl border border-white/20">
+      Visible AI
+  </div>
+
+  <!-- PERIPHERAL NODES -->
+  <div class="absolute inset-0 flex items-center justify-center" id="node-container">
+
+    
+    <!-- Nodes will be injected by JS -->
+  </div>
+</div>
+
     </div>
 
   </div>
@@ -496,9 +516,6 @@
   </div>
 
 </section>
-
-
-
 <section class="relative w-full h-[80vh] md:h-[95vh] overflow-hidden">
 
   <!-- VIDEO -->
@@ -711,5 +728,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="./assets/js/hero-bg.js" type="module"></script>
 <script src="./assets/js/hero-heading.js"></script>
+<script src="./assets/js/system-map.js"></script>
 </body>
 </html>
