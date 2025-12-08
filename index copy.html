@@ -1,222 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Masonry Gallery Tailwind</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Framer Testimonial Section</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <style>
-    /* Masonry Layout */
-    .masonry {
-      column-count: 2;
-      column-gap: 1.5rem;
-    }
-    @media (min-width: 640px) {
-      .masonry {
-        column-count: 3;
-      }
-    }
-    @media (min-width: 1024px) {
-      .masonry {
-        column-count: 4;
-      }
-    }
-    @media (min-width: 1440px) {
-      .masonry {
-        column-count: 5;
-      }
-    }
-    .grid-item {
-      break-inside: avoid;
+    body {
+      background: black;
+      color: white;
     }
   </style>
 </head>
 
-<body class="bg-neutral-950 text-white">
+<body class="p-8">
 
+  <section class="max-w-6xl mx-auto">
 
+    <h2 class="text-4xl font-semibold mb-10 leading-tight">
+      Powering ambitious<br>teams worldwide
+    </h2>
 
-  <section class="mt-5 px-4 max-w-screen-2xl mx-auto">
+    <!-- Main Card -->
+    <div class="border-2 border-white/5 rounded-3xl overflow-hidden flex flex-col lg:flex-row">
 
-    <div id="gridContainer" class="opacity-0 translate-y-8 transition-all duration-700">
+      <!-- LEFT SIDE -->
+      <div class="p-10 lg:w-1/2 flex flex-col justify-between">
 
-      <div id="masonryGrid" class="masonry">
+        <div>
+     
 
-        <!-- START OF IMAGE BLOCKS -->
-        <!-- I inserted ALL your original images, fully Tailwind-optimized -->
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://i.pinimg.com/736x/d0/0d/7e/d00d7e5283fe55c03ab1b3f7da4dfd6e.jpg">
+          <p class="text-2xl font-medium leading-relaxed">
+            “Framer gives us everything<br>
+            we need to move fast. We<br>
+            don’t wait on dev. We don’t<br>
+            compromise on design.”
+          </p>
         </div>
 
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://i.pinimg.com/736x/00/30/f6/0030f6d928d33b8bb2eb9f09fb35e50d.jpg">
-        </div>
+        <div class="mt-10">
+          <div class="flex items-center gap-3">
+            <img src="https://i.pravatar.cc/60"
+                 class="w-12 h-12 rounded-full">
+            <div class="text-sm opacity-80">
+              Henry Madsen<br>
+              Head of Design at Perplexity
+            </div>
+          </div>
 
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://i.pinimg.com/736x/a5/a6/cb/a5a6cbcf3f4d0751987795818d8f9a08.jpg">
+          <a href="#" class="text-sm mt-5 inline-block opacity-80 hover:opacity-100 transition">
+            Read more ›
+          </a>
         </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://framerusercontent.com/images/a9MHaTnx4LS4UTRZseMbyqjJ0I.jpg?width=400&height=600">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://framerusercontent.com/images/a9MHaTnx4LS4UTRZseMbyqjJ0I.jpg?width=500&height=500">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://framerusercontent.com/images/a9MHaTnx4LS4UTRZseMbyqjJ0I.jpg?width=840&height=360">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://framerusercontent.com/images/a9MHaTnx4LS4UTRZseMbyqjJ0I.jpg?width=600&height=450">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://i.pinimg.com/736x/b9/e2/0a/b9e20aedbc7446807f9710534ee0a44b.jpg">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://framerusercontent.com/images/a9MHaTnx4LS4UTRZseMbyqjJ0I.jpg?width=450&height=600">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://framerusercontent.com/images/a9MHaTnx4LS4UTRZseMbyqjJ0I.jpg?width=640&height=360">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://i.pinimg.com/736x/ae/f3/30/aef330e6920f3534270dc486a6ad77a8.jpg">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://framerusercontent.com/images/a9MHaTnx4LS4UTRZseMbyqjJ0I.jpg?width=630&height=270">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://framerusercontent.com/images/a9MHaTnx4LS4UTRZseMbyqjJ0I.jpg?width=350&height=525">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://framerusercontent.com/images/a9MHaTnx4LS4UTRZseMbyqjJ0I.jpg?width=700&height=525">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://framerusercontent.com/images/a9MHaTnx4LS4UTRZseMbyqjJ0I.jpg?width=480&height=480">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://framerusercontent.com/images/a9MHaTnx4LS4UTRZseMbyqjJ0I.jpg?width=360&height=480">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://i.pinimg.com/736x/18/f2/6c/18f26c0359c7003784d8785b7ddb9431.jpg">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://i.pinimg.com/736x/29/05/58/290558be5ece0f00651798a89c80d339.jpg">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://i.pinimg.com/736x/af/3c/b1/af3cb124d221ac39f3ffcc1b0dfbb74a.jpg">
-        </div>
-
-        <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
-          <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://i.pinimg.com/736x/aa/20/a5/aa20a56cdd3524bf8f44e7f6e4a84a6f.jpg">
-        </div>
-
       </div>
+
+      <!-- RIGHT SIDE (IMAGE) -->
+      <div class="lg:w-1/2 relative">
+        <img src="https://i.pinimg.com/736x/3e/24/27/3e2427a820c7cd0ff6ae1782b20c3b50.jpg"
+             class="w-full h-full object-cover">
+      </div>
+
     </div>
+
+    <!-- Optional footer navigation like screenshot -->
+    <div class="flex justify-center gap-8 text-neutral-500 mt-8 text-sm">
+      <span>Perplexity</span>
+      <span>Visual Electric</span>
+      <span>Biograph</span>
+      <span>Cradle</span>
+      <span>Milc</span>
+    </div>
+
   </section>
-
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-
-    const loading = document.getElementById("loading");
-    const gridContainer = document.getElementById("gridContainer");
-    const items = document.querySelectorAll(".grid-item");
-
-    function simulateLoading() {
-      loading.classList.remove("hidden");
-
-      let loaded = 0;
-      const images = document.querySelectorAll(".grid-item img");
-      const total = images.length;
-
-      images.forEach((img) => {
-        if (img.complete) {
-          done();
-        } else {
-          img.onload = done;
-          img.onerror = done;
-        }
-      });
-
-      function done() {
-        loaded++;
-        if (loaded === total) finish();
-      }
-    }
-
-    function finish() {
-      gsap.to(loading, {
-        opacity: 0,
-        duration: 0.5,
-        onComplete: () => loading.classList.add("hidden"),
-      });
-
-      gsap.to(gridContainer, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-      });
-
-      document.querySelectorAll(".grid-item").forEach((item, i) => {
-        gsap.to(item, {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 1.1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-          },
-          delay: i * 0.05,
-        });
-      });
-    }
-
-    // document.addEventListener("DOMContentLoaded", simulateLoading);
-    document.addEventListener("DOMContentLoaded", finish);
-
-  </script>
 
 </body>
 </html>
