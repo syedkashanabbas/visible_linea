@@ -108,3 +108,28 @@ body {
   justify-content: center;
   text-align: center;
 }
+/* Grid Items */
+
+    /* Masonry Layout */
+    .masonry {
+      column-count: 2;
+      column-gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .masonry {
+        column-count: 3;
+      }
+    }
+    @media (min-width: 1024px) {
+      .masonry {
+        column-count: 4;
+      }
+    }
+    @media (min-width: 1440px) {
+      .masonry {
+        column-count: 5;
+      }
+    }
+    .grid-item {
+      break-inside: avoid;
+    }
