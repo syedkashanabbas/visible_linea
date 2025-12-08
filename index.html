@@ -49,64 +49,75 @@
     </div>
   </div>
 </nav>
-<section id="hero-section" 
-  class="relative min-h-screen flex items-center px-10 md:px-24 overflow-hidden">
+<section id="hero-section"
+  class="relative min-h-screen flex items-center px-6 sm:px-10 md:px-24 py-16 md:py-0 overflow-hidden">
 
   <canvas id="hero-bg" class="absolute inset-0 w-full h-full"></canvas>
 
-  <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-10 w-full">
+  <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12 w-full">
 
-    <!-- Left Column (1–6) -->
-    <div class="md:col-span-6 flex flex-col justify-center">
+    <!-- LEFT COLUMN -->
+    <div class="md:col-span-6 flex flex-col justify-center text-center md:text-left">
 
-      <h1 id="hero-title" class="text-3xl md:text-6xl font-semibold leading-tight mb-6 reveal">
-        <span class="line">Dalla visione ai sistemi:</span>
-        <span class="line">integriamo l’AI nei tuoi processi.</span>
+      <h1 id="hero-title"
+          class="text-2xl sm:text-3xl lg:text-5xl xl:text-6xl font-semibold leading-tight mb-6 reveal">
+        <span class="line block">Dalla visione ai sistemi:</span>
+        <span class="line block">integriamo l’AI nei tuoi processi.</span>
       </h1>
 
-      <p id="hero-sub" class="text-gray-200 text-lg leading-relaxed mb-6 reveal-item">
-        Progettiamo e implementiamo soluzioni di intelligenza artificiale che si connettono al tuo stack, automatizzano i flussi e migliorano le performance operative.
+      <p id="hero-sub"
+         class="text-gray-200 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6 reveal-item">
+        Progettiamo e implementiamo soluzioni di intelligenza artificiale che si connettono al tuo stack,
+        automatizzano i flussi e migliorano le performance operative.
       </p>
 
-      <p id="hero-body" class="text-gray-300 text-base leading-relaxed mb-10 max-w-xl reveal-item">
-        Niente esperimenti isolati o strumenti scollegati. Creiamo sistemi reali, workflow, assistenti, integrazioni API e automazioni che funzionano ogni giorno nella tua azienda.
+      <p id="hero-body"
+         class="text-gray-300 text-sm sm:text-base leading-relaxed mb-8 sm:mb-10 max-w-xl mx-auto md:mx-0 reveal-item">
+        Niente esperimenti isolati o strumenti scollegati. Creiamo sistemi reali, workflow, assistenti,
+        integrazioni API e automazioni che funzionano ogni giorno nella tua azienda.
       </p>
 
-      <div class="flex gap-4 reveal-item">
-        <button class="px-8 py-3 rounded-xl text-lg font-medium bg-[#E5F3FF] text-[#0A1A2F] shadow-sm transition-all duration-300 hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.45)] hover:bg-[#F0F8FF]">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start reveal-item">
+        <button
+          class="px-6 py-3 rounded-xl text-base sm:text-lg font-medium bg-[#E5F3FF] text-[#0A1A2F]
+                 shadow-sm transition-all duration-300 hover:bg-[#F0F8FF]
+                 hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.45)]">
           Richiedi un’Analisi AI
         </button>
 
-        <button class="px-8 py-3 rounded-xl text-lg font-medium border border-white/40 text-white transition-all duration-300 hover:bg-white hover:text-[#0A1A2F]">
+        <button
+          class="px-6 py-3 rounded-xl text-base sm:text-lg font-medium border border-white/40 text-white
+                 transition-all duration-300 hover:bg-white hover:text-[#0A1A2F]">
           Esplora i servizi
         </button>
       </div>
 
     </div>
 
-    <!-- Right Column (7–12) -->
-    <div class="md:col-span-6 relative">
-     <div id="system-map"
-     class="relative w-full h-[420px] md:h-[500px] flex items-center justify-center 
-             ">
+    <!-- RIGHT COLUMN -->
+    <div class="md:col-span-6 flex justify-center md:justify-end relative">
 
-  <!-- SVG lines -->
-  <svg class="absolute inset-0 w-full h-full pointer-events-none" id="system-lines"></svg>
+      <div id="system-map"
+           class="relative w-full max-w-[420px] sm:max-w-[480px] md:max-w-none
+                  h-[300px] sm:h-[380px] md:h-[500px] flex items-center justify-center">
 
-  <!-- CENTRAL NODE -->
-  <div id="center-node"
-       class="relative z-10 w-40 h-40 md:w-48 md:h-48 rounded-full bg-white flex items-center justify-center text-black font-semibold text-center shadow-xl border border-white/20">
-      Visible AI
-  </div>
+        <!-- SVG lines -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none" id="system-lines"></svg>
 
-  <!-- PERIPHERAL NODES -->
-  <div class="absolute inset-0 flex items-center justify-center" id="node-container">
+        <!-- CENTRAL NODE -->
+        <div id="center-node"
+             class="relative z-10 w-28 h-28 sm:w-36 sm:h-36 md:w-48 md:h-48
+                    rounded-full bg-white flex items-center justify-center
+                    text-black font-semibold text-center shadow-xl border border-white/20">
+          Visible AI
+        </div>
 
-    
-    <!-- Nodes will be injected by JS -->
-  </div>
-</div>
+        <!-- PERIPHERAL NODES -->
+        <div class="absolute inset-0 flex items-center justify-center" id="node-container">
+          <!-- nodes injected by JS -->
+        </div>
 
+      </div>
     </div>
 
   </div>
