@@ -243,3 +243,31 @@ body {
   transform: scale(1.06);
   filter: drop-shadow(0 0 35px rgba(255,255,255,0.5));
 }
+
+.wide-grid {
+  width: 140%;
+  margin-left: -20%;
+  transition: transform 0.3s ease-out;
+}
+.masonry.wide-grid {
+  width: 130%;
+  max-width: 130%;
+  margin-left: -15%; /* centers it so shifting doesn't break layout */
+  position: relative;
+  will-change: transform;
+}
+.masonry {
+  column-count: 4;
+  column-gap: 1.5rem;
+}
+
+@media(max-width:1200px){
+  .masonry { column-count: 3; }
+}
+
+@media(max-width:768px){
+  .masonry { column-count: 2; }
+}
+#gridContainer {
+  overflow: hidden;
+}
