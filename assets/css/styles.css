@@ -29,22 +29,27 @@
   }
 
 
-
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 body {
-   font-family: "Satoshi", sans-serif;
+  font-family: "Satoshi", sans-serif;
+
   background:
-    /* Layer 1: Main Dark Background */
-    linear-gradient(to top, #000000 0%, #1a1a1a 100%),
-    
-    /* Layer 2: Radial Highlight (like the center glow) */
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 40%),
-    
-    /* Layer 3: Secondary Highlight (like the side glows) */
-    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-    
-  background-blend-mode: screen; /* Keep the blend mode for the layered effect */
-    color: #ffffff;
+    /* Main dark gradient */
+    linear-gradient(to top, #000 0%, #0d0d0d 100%),
+
+    /* Soft dark radial at center */
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.6) 0%, transparent 50%),
+
+    /* Slight vignette from edges */
+    radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.8) 100%);
+
+  background-blend-mode: normal;
+  color: #ffffff;
 }
+
     /* CINEMATIC MASK REVEAL */
     .reveal {
       opacity: 0;

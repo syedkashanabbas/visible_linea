@@ -37,6 +37,44 @@ const pointLight = new THREE.PointLight(0x7cffb2, 2, 50);
 pointLight.position.set(2, 3, 5);
 scene.add(pointLight);
 
+// --- STARRY BACKGROUND --- //
+const starGeometry = new THREE.BufferGeometry();
+const starCount = 1500;
+const starPositions = [];
+const starColors = [];
+
+const colorPalette = [
+  new THREE.Color("#00d4ff"), // cyan
+  new THREE.Color("#007bff"), // blue
+  new THREE.Color("#ff00b8"), // magenta
+  new THREE.Color("#6a00ff")  // violet
+];
+
+for (let i = 0; i < starCount; i++) {
+  const x = (Math.random() - 0.5) * 80;
+  const y = (Math.random() - 0.5) * 80;
+  const z = (Math.random() - 0.5) * 80;
+  starPositions.push(x, y, z);
+
+  const color = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+  starColors.push(color.r, color.g, color.b);
+}
+
+starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starPositions, 3));
+starGeometry.setAttribute('color', new THREE.Float32BufferAttribute(starColors, 3));
+
+const starMaterial = new THREE.PointsMaterial({
+  size: 0.05,
+  map: generateCircleTexture(),
+  transparent: true,
+  blending: THREE.AdditiveBlending,
+  depthWrite: false,
+  vertexColors: true
+});
+
+const stars = new THREE.Points(starGeometry, starMaterial);
+scene.add(stars);
+
 let particles, originalPositions, explodedPositions, morph = 0;
 
 const loader = new THREE.TextureLoader();
@@ -143,8 +181,12 @@ function animate() {
     }
 
     particles.geometry.attributes.position.needsUpdate = true;
-
     particles.rotation.y += 0.0015;
+  }
+
+  if (stars) {
+    stars.rotation.y += 0.0003;
+    stars.rotation.x += 0.0001;
   }
 
   renderer.render(scene, camera);
