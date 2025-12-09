@@ -57,5 +57,5 @@
       });
     }
 
-    // document.addEventListener("DOMContentLoaded", simulateLoading);
+
     document.addEventListener("DOMContentLoaded", finish);
