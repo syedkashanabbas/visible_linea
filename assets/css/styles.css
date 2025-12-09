@@ -28,11 +28,15 @@
     font-weight: 300;
   }
 
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+.marquee {
+  animation: marquee 360s linear infinite;
+}
+
 body {
   font-family: "Satoshi", sans-serif;
 
