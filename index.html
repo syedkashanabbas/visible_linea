@@ -379,7 +379,7 @@
 
   </div>
 </section>
-<!-- 
+
 <section class="w-full py-32 ">
 
 
@@ -478,7 +478,7 @@
 
   </div>
 
-</section> -->
+</section>
 
 
 
@@ -887,43 +887,40 @@
     </div>
   </div>
 </section>
-<section class="w-full py-28 relative overflow-hidden text-white bg-[#1D1D1D]">
 
-  <!-- GLOW BACKGROUND -->
-  <div class="absolute inset-0">
-    <div class="absolute top-0 left-1/2 w-96 h-96 -translate-x-1/2 rounded-full 
-                bg-white/5 blur-[150px] pointer-events-none"></div>
-  </div>
+<section id="ctaSection" class="w-full text-white relative overflow-hidden">
 
-  <!-- CONTENT -->
-  <div class="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
 
-    <!-- LEFT TEXT -->
-    <div>
-      <h2 class="text-3xl md:text-4xl font-semibold leading-tight">
-        Parla con un consulente per l’integrazione dell’AI nella tua azienda.
-      </h2>
+    <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+        <img class="w-full " src="assets/imgs/logo.png" alt="dashboard image">
+        <div class="mt-4 md:mt-0">
+      <h2 class="cta-title mb-4 text-4xl tracking-tight font-extrabold">
+  Parla con un consulente per l’integrazione dell’AI nella tua azienda.
+</h2>
 
-      <p class="mt-4 text-base opacity-70 max-w-md">
-        Ti aiutiamo a capire dove l’AI può migliorare i tuoi processi e quali
-        sistemi costruire.
-      </p>
-    </div>
+<p class="cta-sub mb-6 font-light md:text-lg">
+  Ti aiutiamo a capire dove l’AI può migliorare i tuoi processi e quali sistemi costruire.
+</p>
 
-    <!-- RIGHT CTA BUTTON -->
-    <div class="flex md:justify-end items-start md:items-center">
-      <a href="#contact"
-         class="px-8 py-4 rounded-xl font-bold whitespace-nowrap
-                bg-[#00C8C8] text-[#0d1117]
-                shadow-[0_0_25px_6px_rgba(0,200,200,0.35)]
-                hover:shadow-[0_0_35px_12px_rgba(0,200,200,0.45)]
-                transition-all duration-300">
-        Richiedi un’Analisi AI
+            <a href="#contact"
+         data-aos="zoom-in"
+         data-aos-delay="380"
+         class="inline-block px-8 py-3 rounded-xl text-lg font-medium 
+                bg-[#E5F3FF] text-[#0A1A2F]
+                shadow-sm
+                transition-all duration-300
+                hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.45)]
+                hover:bg-[#F0F8FF]">
+        Scopri come integriamo l’AI
+           <span class="inline-block ml-2 translate-y-[1px] transition-transform duration-300 group-hover:translate-x-1">
+  →
+</span>
+
       </a>
+        </div>
     </div>
-
-  </div>
 </section>
+
 
 
 
@@ -1006,9 +1003,11 @@
 </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/split-type"></script>
 <script src="./assets/js/hero-bg.js" type="module"></script>
 <script src="./assets/js/hero-heading.js"></script>
 <script src="./assets/js/system-map.js"></script>
 <script src="./assets/js/masonry-gallery.js"></script>
+<script src="./assets/js/cta.js"></script>
 </body>
 </html>
