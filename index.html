@@ -54,34 +54,39 @@
   </div>
 </nav>
 <section id="hero-section"
-  class="relative min-h-screen flex items-center px-6 sm:px-10 md:px-24 py-16 md:py-0 overflow-hidden">
+  class="relative min-h-screen flex items-center px-4 sm:px-8 md:px-20 lg:px-28 py-20 md:py-0 overflow-hidden">
+
 
   <canvas id="hero-bg" class="absolute inset-0 w-full h-full"></canvas>
 
-  <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12 w-full">
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 w-full">
 
     <!-- LEFT COLUMN -->
     <div class="md:col-span-6 flex flex-col justify-center text-center md:text-left">
 
-      <h1 id="hero-title"
-          class="text-2xl sm:text-3xl lg:text-5xl xl:text-6xl font-semibold leading-tight mb-6 reveal">
+     <h1 id="hero-title"
+     class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight mb-6 reveal">
+
         <span class="line block">Dalla visione ai sistemi:</span>
         <span class="line block">integriamo l’AI nei tuoi processi.</span>
       </h1>
 
-      <p id="hero-sub"
-         class="text-gray-200 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6 reveal-item">
+     <p id="hero-sub"
+   class="text-gray-200 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6 reveal-item">
+
         Progettiamo e implementiamo soluzioni di intelligenza artificiale che si connettono al tuo stack,
         automatizzano i flussi e migliorano le performance operative.
       </p>
 
       <p id="hero-body"
-         class="text-gray-300 text-sm sm:text-base leading-relaxed mb-8 sm:mb-10 max-w-xl mx-auto md:mx-0 reveal-item">
+   class="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed mb-8 sm:mb-10 max-w-xl mx-auto md:mx-0 reveal-item">
+
         Niente esperimenti isolati o strumenti scollegati. Creiamo sistemi reali, workflow, assistenti,
         integrazioni API e automazioni che funzionano ogni giorno nella tua azienda.
       </p>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start reveal-item">
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start reveal-item">
+
         <button
           class="px-6 py-3 rounded-xl text-base sm:text-lg font-medium bg-[#E5F3FF] text-[#0A1A2F]
                  shadow-sm transition-all duration-300 hover:bg-[#F0F8FF]
@@ -233,44 +238,7 @@
       </div>
     </div>
   </section>
-<script>
-const section = document.getElementById("parallaxGallery");
-const grid = document.getElementById("masonryGrid");
 
-section.addEventListener("mousemove", (e) => {
-  const rect = section.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-
-  const percent = x / rect.width;
-
-  // Increase movement range (wider shift)
-  const shift = gsap.utils.mapRange(0, 1, 120, -120, percent);
-
-  gsap.to(grid, {
-    x: shift,
-    duration: 0.25,   // much faster
-    ease: "power1.out" // smoother, less resistance
-  });
-});
-
-// Smooth reset
-section.addEventListener("mouseleave", () => {
-  gsap.to(grid, {
-    x: 0,
-    duration: 0.5,
-    ease: "power2.out"
-  });
-});
-
-
-gsap.to(grid, {
-  x: shift,
-  duration: 0.25,
-  ease: "power1.out",
-  overwrite: true
-});
-
-</script>
 
 
 <section class="w-full py-32 overflow-hidden">
@@ -1032,6 +1000,41 @@ gsap.to(grid, {
     duration: 900,
     easing: 'ease-out-quart'
   });
+const section = document.getElementById("parallaxGallery");
+const grid = document.getElementById("masonryGrid");
+
+section.addEventListener("mousemove", (e) => {
+  const rect = section.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+
+  const percent = x / rect.width;
+
+  // Increase movement range (wider shift)
+  const shift = gsap.utils.mapRange(0, 1, 120, -120, percent);
+
+  gsap.to(grid, {
+    x: shift,
+    duration: 0.25,   // much faster
+    ease: "power1.out" // smoother, less resistance
+  });
+});
+
+// Smooth reset
+section.addEventListener("mouseleave", () => {
+  gsap.to(grid, {
+    x: 0,
+    duration: 0.5,
+    ease: "power2.out"
+  });
+});
+
+
+gsap.to(grid, {
+  x: shift,
+  duration: 0.25,
+  ease: "power1.out",
+  overwrite: true
+});
 
 </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
