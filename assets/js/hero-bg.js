@@ -13,8 +13,11 @@ function generateCircleTexture() {
     size / 2, size / 2, 0,
     size / 2, size / 2, size / 2
   );
-  gradient.addColorStop(0, 'rgba(255,255,255,1)');
-  gradient.addColorStop(1, 'rgba(255,255,255,0)');
+
+  // FULL BLUE GLOW
+  gradient.addColorStop(0, 'rgba(0,123,255,1)');   // center bright blue
+  gradient.addColorStop(1, 'rgba(0,123,255,0)');   // fade-out blue
+
   ctx.fillStyle = gradient;
   ctx.beginPath();
   ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
@@ -22,6 +25,7 @@ function generateCircleTexture() {
 
   return new THREE.CanvasTexture(canvas);
 }
+
 
 const canvas = document.getElementById('hero-bg');
 const scene = new THREE.Scene();
@@ -44,11 +48,12 @@ const starPositions = [];
 const starColors = [];
 
 const colorPalette = [
-  new THREE.Color("#00d4ff"), // cyan
-  new THREE.Color("#007bff"), // blue
-  new THREE.Color("#ff00b8"), // magenta
-  new THREE.Color("#6a00ff")  // violet
+  new THREE.Color("#007bff"),
+  new THREE.Color("#007bff"),
+  new THREE.Color("#007bff"),
+  new THREE.Color("#007bff")
 ];
+
 
 for (let i = 0; i < starCount; i++) {
   const x = (Math.random() - 0.5) * 80;
