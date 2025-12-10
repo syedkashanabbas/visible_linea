@@ -279,59 +279,61 @@
     </div>
   </div>
 
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
+<script>
+  gsap.registerPlugin(ScrollTrigger);
 
-    const panels = gsap.utils.toArray("#framer-glass-scroll .panel");
-    const items = gsap.utils.toArray("#framer-glass-scroll .menu-item");
+  // Use unique variable names
+  const framerPanels = gsap.utils.toArray("#framer-glass-scroll .panel");
+  const framerItems = gsap.utils.toArray("#framer-glass-scroll .menu-item");
 
-    panels.forEach((panel, i) => {
-      const img = panel.querySelector("img");
+  framerPanels.forEach((panel, i) => {
+    const img = panel.querySelector("img");
 
-      // Blur reveal effect
-      gsap.fromTo(img,
-        { filter: "blur(20px)", scale: 1.08 },
-        {
-          filter: "blur(0px)", scale: 1,
-          duration: 1.5, ease: "power2.out",
-          scrollTrigger: { trigger: panel, start: "top 80%", end: "top 40%", scrub: true },
-        }
-      );
+    // blur reveal animation
+    gsap.fromTo(img,
+      { filter: "blur(20px)", scale: 1.08 },
+      {
+        filter: "blur(0px)", scale: 1,
+        duration: 1.5, ease: "power2.out",
+        scrollTrigger: { trigger: panel, start: "top 80%", end: "top 40%", scrub: true },
+      }
+    );
 
-      // Parallax motion
-      gsap.to(img, {
-        yPercent: 12, ease: "none",
-        scrollTrigger: { trigger: panel, scrub: true }
-      });
-
-      // Sync left text panel
-      ScrollTrigger.create({
-        trigger: panel,
-        start: "top center",
-        end: "bottom center",
-        onEnter: () => activateSection(i),
-        onEnterBack: () => activateSection(i),
-      });
+    // parallax motion
+    gsap.to(img, {
+      yPercent: 12, ease: "none",
+      scrollTrigger: { trigger: panel, scrub: true }
     });
 
-    function activateSection(i) {
-      items.forEach((item, index) => {
-        const desc = item.querySelector(".desc");
-        const line = item.querySelector(".line");
-        if (index === i) {
-          item.classList.add("active");
-          item.classList.remove("inactive");
-          desc.classList.remove("hidden");
-          gsap.to(line, { backgroundColor: "rgba(255,255,255,0.6)", scaleX: 1.05, duration: 0.6 });
-        } else {
-          item.classList.add("inactive");
-          item.classList.remove("active");
-          desc.classList.add("hidden");
-          gsap.to(line, { backgroundColor: "rgba(255,255,255,0.1)", scaleX: 1, duration: 0.6 });
-        }
-      });
-    }
-  </script>
+    // activate sidebar sync
+    ScrollTrigger.create({
+      trigger: panel,
+      start: "top center",
+      end: "bottom center",
+      onEnter: () => framerActivateSection(i),
+      onEnterBack: () => framerActivateSection(i),
+    });
+  });
+
+  function framerActivateSection(i) {
+    framerItems.forEach((item, index) => {
+      const desc = item.querySelector(".desc");
+      const line = item.querySelector(".line");
+      if (index === i) {
+        item.classList.add("active");
+        item.classList.remove("inactive");
+        desc.classList.remove("hidden");
+        gsap.to(line, { backgroundColor: "rgba(255,255,255,0.6)", scaleX: 1.05, duration: 0.6 });
+      } else {
+        item.classList.add("inactive");
+        item.classList.remove("active");
+        desc.classList.add("hidden");
+        gsap.to(line, { backgroundColor: "rgba(255,255,255,0.1)", scaleX: 1, duration: 0.6 });
+      }
+    });
+  }
+</script>
+
 </section>
 <!-- ===== End Framer Glass Scroll Section ===== -->
 
