@@ -36,6 +36,9 @@
 .marquee {
   animation: marquee 360s linear infinite;
 }
+html, body {
+  overflow-x: hidden;
+}
 
 body {
   font-family: "Satoshi", sans-serif;
@@ -290,6 +293,12 @@ body {
 #gridContainer {
   overflow: hidden;
 }
+#hero-section {
+  will-change: transform, opacity;
+  transition: transform 0.2s linear, opacity 0.2s linear;
+}
+
+
 #hero-logo {
   animation: slowSpin 25s linear infinite;
   transform-style: preserve-3d;

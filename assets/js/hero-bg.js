@@ -203,3 +203,20 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
+
+// Smooth zoom effect for hero section
+const hero = document.getElementById('hero-section');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const maxZoom = 0.15;        // zoom up to 15 percent
+  const zoomPoint = 350;       // scroll distance until full zoom
+
+  const progress = Math.min(scrollY / zoomPoint, 1);
+  const scale = 1 + progress * maxZoom;
+
+  hero.style.transform = `scale(${scale})`;
+  hero.style.transformOrigin = 'center top';
+
+  hero.style.opacity = `${1 - progress * 0.35}`;   // gentle fade out
+});
