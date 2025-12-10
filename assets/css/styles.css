@@ -333,3 +333,20 @@ body {
   opacity: 1;
   transform: scale(1);
 }
+.logos-wrapper {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.logos-track {
+  width: max-content;
+  animation: slide 25s linear infinite;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
