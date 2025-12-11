@@ -359,4 +359,13 @@ body {
     transform: translateX(-50%);
   }
 }
- 
+
+.menu-item[data-state="active"] h2 {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.menu-item[data-state="inactive"] h2 {
+  opacity: 0.4;
+  transform: translateX(-5px);
+}

@@ -282,57 +282,101 @@
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  // Use unique variable names
+  const framerSection = document.querySelector("#framer-glass-scroll");
   const framerPanels = gsap.utils.toArray("#framer-glass-scroll .panel");
   const framerItems = gsap.utils.toArray("#framer-glass-scroll .menu-item");
 
+  // Total scroll distance (based on panels)
+  const scrollDistance = framerPanels.length * window.innerHeight;
+
+  // ✅ Pin the entire section for a cinematic effect
+  ScrollTrigger.create({
+    trigger: framerSection,
+    start: "top top",
+    end: "+=" + scrollDistance,
+    pin: true,
+    pinSpacing: true,
+    scrub: true,
+  });
+
+  // ✅ Animate each image and sync sidebar text
   framerPanels.forEach((panel, i) => {
     const img = panel.querySelector("img");
 
-    // blur reveal animation
-    gsap.fromTo(img,
+    // Blur + zoom reveal
+    gsap.fromTo(
+      img,
       { filter: "blur(20px)", scale: 1.08 },
       {
-        filter: "blur(0px)", scale: 1,
-        duration: 1.5, ease: "power2.out",
-        scrollTrigger: { trigger: panel, start: "top 80%", end: "top 40%", scrub: true },
+        filter: "blur(0px)",
+        scale: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: () => "top -=" + (window.innerHeight * i),
+          end: () => "top -=" + (window.innerHeight * (i + 1)),
+          scrub: true,
+        },
       }
     );
 
-    // parallax motion
+    // Parallax motion
     gsap.to(img, {
-      yPercent: 12, ease: "none",
-      scrollTrigger: { trigger: panel, scrub: true }
+      yPercent: 10,
+      ease: "none",
+      scrollTrigger: {
+        trigger: framerSection,
+        start: () => "top -=" + (window.innerHeight * i),
+        end: () => "top -=" + (window.innerHeight * (i + 1)),
+        scrub: true,
+      },
     });
 
-    // activate sidebar sync
+    // Sidebar sync
     ScrollTrigger.create({
-      trigger: panel,
-      start: "top center",
-      end: "bottom center",
+      trigger: framerSection,
+      start: () => "top -=" + (window.innerHeight * i),
+      end: () => "top -=" + (window.innerHeight * (i + 1)),
       onEnter: () => framerActivateSection(i),
       onEnterBack: () => framerActivateSection(i),
     });
   });
 
+  // ✅ Sidebar highlight logic
   function framerActivateSection(i) {
-    framerItems.forEach((item, index) => {
-      const desc = item.querySelector(".desc");
-      const line = item.querySelector(".line");
-      if (index === i) {
-        item.classList.add("active");
-        item.classList.remove("inactive");
-        desc.classList.remove("hidden");
-        gsap.to(line, { backgroundColor: "rgba(255,255,255,0.6)", scaleX: 1.05, duration: 0.6 });
-      } else {
-        item.classList.add("inactive");
-        item.classList.remove("active");
-        desc.classList.add("hidden");
-        gsap.to(line, { backgroundColor: "rgba(255,255,255,0.1)", scaleX: 1, duration: 0.6 });
-      }
-    });
-  }
+  framerItems.forEach((item, index) => {
+    const desc = item.querySelector(".desc");
+    const line = item.querySelector(".line");
+
+    if (index === i) {
+      item.dataset.state = "active";
+      desc.classList.remove("hidden");
+
+      gsap.to(line, {
+        backgroundColor: "rgba(255,255,255,0.6)",
+        scaleX: 1.05,
+        duration: 0.5,
+        ease: "power2.out"
+      });
+    } else {
+      item.dataset.state = "inactive";
+      desc.classList.add("hidden");
+
+      gsap.to(line, {
+        backgroundColor: "rgba(255,255,255,0.1)",
+        scaleX: 1,
+        duration: 0.5,
+        ease: "power2.inOut"
+      });
+    }
+  });
+}
+
+
+  // ✅ Refresh ScrollTrigger on resize (for correct scroll height)
+  window.addEventListener("resize", () => ScrollTrigger.refresh());
 </script>
+
 
 </section>
 <!-- ===== End Framer Glass Scroll Section ===== -->
@@ -1184,12 +1228,7 @@ section.addEventListener("mouseleave", () => {
 });
 
 
-gsap.to(grid, {
-  x: shift,
-  duration: 0.25,
-  ease: "power1.out",
-  overwrite: true
-});
+
 
 gsap.to("#hero-logo", {
   rotate: 3,
