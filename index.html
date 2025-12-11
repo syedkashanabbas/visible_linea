@@ -125,6 +125,7 @@
 
       <div id="masonryGrid" class="masonry wide-grid">
 
+
     
 
         <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
@@ -149,7 +150,7 @@
 
         <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
           <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            src="https://framerusercontent.com/images/a9MHaTnx4LS4UTRZseMbyqjJ0I.jpg?width=500&height=500">
+            src="./assets/imgs/dashboard3.webp">
         </div>
 
         <div class="grid-item mb-6 overflow-hidden rounded-2xl opacity-0 scale-90 translate-y-12 blur-lg transition-all">
@@ -175,8 +176,24 @@
           <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
             src="https://i.pinimg.com/736x/af/3c/b1/af3cb124d221ac39f3ffcc1b0dfbb74a.jpg">
         </div>
-        
+      <div id="brandOverlay"
+        class="fixed top-[85%] left-1/2 -translate-x-1/2 -translate-y-1/2
+              w-fit max-w-full
+              backdrop-blur-xl bg-white/10 border border-white/20
+              rounded-3xl shadow-2xl
+              px-6 py-4 md:px-10 md:py-6
+              flex flex-wrap items-center justify-center gap-10
+              z-[9999] opacity-0 scale-90 overflow-hidden">
+
+        <img src="/assets/imgs/shopify.svg"   class="w-20 md:w-24 lg:w-28 opacity-90" />
+        <img src="/assets/imgs/google.svg"    class="w-20 md:w-24 lg:w-28 opacity-90" />
+        <img src="/assets/imgs/anthropic.svg" class="w-20 md:w-24 lg:w-28 opacity-90" />
+        <img src="/assets/imgs/amazon.svg"    class="w-20 md:w-24 lg:w-28 opacity-90" />
       </div>
+
+
+
+
 
 
     </div>
@@ -185,7 +202,7 @@
 
 
 <!-- ===== Framer Glass Scroll Section ===== -->
-<section id="framer-glass-scroll" class="relative w-full bg-black text-white overflow-hidden">
+<section id="framer-glass-scroll" class="relative w-full  text-white overflow-hidden">
   <div class="max-w-8xl mx-auto flex flex-col lg:flex-row gap-16 px-6 md:px-12 lg:px-20 py-20">
 
     <!-- LEFT TEXT PANEL -->
@@ -312,7 +329,7 @@
         scale: 1,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: section,
+          trigger: framerSection,
           start: () => "top -=" + (window.innerHeight * i),
           end: () => "top -=" + (window.innerHeight * (i + 1)),
           scrub: true,
@@ -373,7 +390,7 @@
 }
 
 
-  // ✅ Refresh ScrollTrigger on resize (for correct scroll height)
+  // Refresh ScrollTrigger on resize (for correct scroll height)
   window.addEventListener("resize", () => ScrollTrigger.refresh());
 </script>
 
@@ -731,67 +748,7 @@
 
 </section>
 
-<section class="w-full  py-12 overflow-hidden">
-  <div class="text-center max-w-8xl mx-auto mb-16 px-6"
-       data-aos="fade-up"
-       data-aos-duration="900">
 
-    <h2 class="text-4xl md:text-5xl font-semibold leading-tight">
-          Trusted by leading companies<br>
-     
-    </h2>
-
-
-  </div>
-
-  <div class="logos-wrapper relative overflow-hidden">
-    <div class="logos-track flex items-center gap-16">
-      <!-- repeat your logos -->
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <!-- you can add more logos here -->
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-    <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <!-- you can add more logos here -->
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-
-    </div>
-
-    <div class="logos-track flex items-center gap-16">
-      <!-- duplicate logos for infinite loop -->
-           <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <!-- you can add more logos here -->
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-          <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-      <img src="https://res.cloudinary.com/mindvalley/image/fetch/c_scale,dpr_1,f_auto,fl_lossy,q_auto,w_102/https://a.storyblok.com/f/60579/106x29/edff29df59/logo_forbes.svg" class="h-8 opacity-80" />
-
-    </div>
-  </div>
-</section>
 <section class="w-full  py-20">
   <div class="max-w-7xl mx-auto px-6">
 
@@ -1226,6 +1183,19 @@ section.addEventListener("mouseleave", () => {
     ease: "power2.out"
   });
 });
+
+
+gsap.fromTo("#brandOverlay",
+  { opacity: 0, scale: 0.9, filter: "blur(40px)" },
+  {
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    duration: 1.2,
+    ease: "power2.out",
+    delay: 0.3
+  }
+);
 
 
 
