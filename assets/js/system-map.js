@@ -2,7 +2,7 @@
 // const icons = [
 //   "assets/imgs/crm_icon.jpeg",
 //   "assets/imgs/erp_icon.jpeg",
-//   "assets/imgs/shopify_logo.png",
+//   "assets/imgs/shopify_logo.webp",
 //   "assets/imgs/marketing_icon.jpeg",
 //   "assets/imgs/kb_icon.jpeg",
 //   "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQWE2h48oWOGvtFMV2lyWLBv8ENJmk5QtAltmEXM6XIO00htAi5"
