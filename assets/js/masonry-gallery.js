@@ -1,61 +1,76 @@
- gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-    const loading = document.getElementById("loading");
-    const gridContainer = document.getElementById("gridContainer");
-    const items = document.querySelectorAll(".grid-item");
+document.addEventListener("DOMContentLoaded", () => {
 
-    function simulateLoading() {
-      loading.classList.remove("hidden");
+  const loading = document.getElementById("loading");
+  const gridContainer = document.getElementById("gridContainer");
+  const items = document.querySelectorAll(".grid-item");
 
-      let loaded = 0;
-      const images = document.querySelectorAll(".grid-item img");
-      const total = images.length;
+  function simulateLoading() {
+    // Safe check for loading element
+    if (loading) loading.classList.remove("hidden");
 
-      images.forEach((img) => {
-        if (img.complete) {
-          done();
-        } else {
-          img.onload = done;
-          img.onerror = done;
-        }
-      });
+    let loaded = 0;
+    const images = document.querySelectorAll(".grid-item img");
+    const total = images.length;
 
-      function done() {
-        loaded++;
-        if (loaded === total) finish();
-      }
+    if (total === 0) {
+      finish();
+      return;
     }
 
-    function finish() {
+    images.forEach(img => {
+      if (img.complete) {
+        done();
+      } else {
+        img.onload = done;
+        img.onerror = done;
+      }
+    });
+
+    function done() {
+      loaded++;
+      if (loaded === total) finish();
+    }
+  }
+
+  function finish() {
+    // Fade out loading if exists
+    if (loading) {
       gsap.to(loading, {
         opacity: 0,
         duration: 0.5,
-        onComplete: () => loading.classList.add("hidden"),
+        onComplete: () => loading?.classList.add("hidden"),
       });
+    }
 
+    // Reveal the gallery container
+    if (gridContainer) {
       gsap.to(gridContainer, {
         opacity: 1,
         y: 0,
         duration: 1,
         ease: "power2.out",
       });
-
-      document.querySelectorAll(".grid-item").forEach((item, i) => {
-        gsap.to(item, {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 1.1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-          },
-          delay: i * 0.05,
-        });
-      });
     }
 
+    // Animate each grid item on scroll
+    items.forEach((item, i) => {
+      gsap.to(item, {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 1.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 85%",
+        },
+        delay: i * 0.05,
+      });
+    });
+  }
 
-    document.addEventListener("DOMContentLoaded", finish);
+  simulateLoading();
+});
